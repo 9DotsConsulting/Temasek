@@ -1,4 +1,4 @@
-pageextension 50100 "DOT Employee Card" extends "Employee Card"
+pageextension 50127 "DOT Employee Card" extends "Employee Card"
 {
     layout
     {

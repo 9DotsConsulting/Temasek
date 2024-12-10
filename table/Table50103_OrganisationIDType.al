@@ -1,4 +1,4 @@
-table 50103 "Organisation ID Type"
+table 50103 "DOT Organisation ID Type"
 {
     DataClassification = ToBeClassified;
 

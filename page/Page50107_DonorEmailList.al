@@ -1,20 +1,18 @@
 page 50107 "DOT Donor Email List"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT Donor Email List";
+    Caption = 'Donor Email List';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
-                field("Email ID"; Rec."Email ID")
-                {
-
-                }
+                field("Email ID"; Rec."Email ID") { }
                 field(Email; Rec.Email) { }
                 field(Default; Rec.Default) { }
             }

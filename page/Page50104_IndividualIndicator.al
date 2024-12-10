@@ -1,15 +1,16 @@
 page 50104 "DOT Individual Indicator"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT Individual Indicator";
+    Caption = 'Individual Indicator';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Indicator No."; Rec."Indicator No.")
                 {

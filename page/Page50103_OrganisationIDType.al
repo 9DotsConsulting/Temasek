@@ -1,15 +1,16 @@
 page 50103 "DOT Organisation ID Type"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
-    SourceTable = "Organisation ID Type";
+    UsageCategory = Lists;
+    SourceTable = "DOT Organisation ID Type";
+    Caption = 'Organisation ID Type';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("ID Type No."; Rec."ID Type No.")
                 {

@@ -1,15 +1,16 @@
 page 50102 "DOT ID Type"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT ID Type";
+    Caption = 'ID Type';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("ID Type No."; Rec."ID Type No.")
                 {

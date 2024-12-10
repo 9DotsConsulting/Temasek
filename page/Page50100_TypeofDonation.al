@@ -1,15 +1,16 @@
 page 50100 "DOT Type of Donation"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "DOT Type of Donation";
+    Caption = 'Type of Donation';
+    UsageCategory = Lists;
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Type No."; Rec."Type No.")
                 {

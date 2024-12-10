@@ -1,15 +1,16 @@
 page 50106 "DOT Batch Indicator"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT Batch Indicator";
+    Caption = 'Batch Indicator';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Batch No."; Rec."Batch No.")
                 {

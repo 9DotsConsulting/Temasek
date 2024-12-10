@@ -1,15 +1,16 @@
 page 50101 "DOT Naming Donation"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT Naming Donation";
+    Caption = 'Naming Donation';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Naming No."; Rec."Naming No.")
                 {

@@ -1,15 +1,16 @@
 page 50105 "DOT Donor Payment Method"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "DOT Donor Payment Method";
+    Caption = 'Donor Payment Method';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Payment Method Code"; Rec."Payment Method Code")
                 {
