@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DEV1",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "Sandbox",
+            "environmentName": "SB20240912_DEV1",
+            "tenant": "fc8c44a0-7385-4c96-a611-be7f2dd1323f",
+            "breakOnError": "All",
+            "launchBrowser": false,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "ForceSync"
+        }
+    ]
+}
