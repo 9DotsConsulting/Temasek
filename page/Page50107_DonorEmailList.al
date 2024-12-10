@@ -12,7 +12,6 @@ page 50107 "DOT Donor Email List"
         {
             repeater(Control1)
             {
-                field("Email ID"; Rec."Email ID") { }
                 field(Email; Rec.Email) { }
                 field(Default; Rec.Default) { }
             }

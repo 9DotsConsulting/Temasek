@@ -16,16 +16,19 @@ tableextension 50102 "Customer Extension" extends Customer
         field(50105; "Indicator No."; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "DOT Individual Indicator";
         }
 
         field(50106; "Type No."; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "DOT Type of Donation";
         }
 
         field(50107; "Naming No."; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "DOT Naming Donation";
         }
     }
 }
