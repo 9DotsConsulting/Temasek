@@ -25,7 +25,7 @@ table 50104 "DOT Individual Indicator"
 
     fieldgroups
     {
-        fieldgroup(DropDown; "Indicator No.") { }
+        fieldgroup(DropDown; "Indicator No.", Terms) { }
     }
 
 }

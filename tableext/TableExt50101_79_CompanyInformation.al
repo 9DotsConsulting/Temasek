@@ -5,7 +5,7 @@ tableextension 50101 "Company Information Extension" extends "Company Informatio
         field(50100; "Donor Authorised"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = Employee;
+            TableRelation = Employee where("Donor Authorised" = const(true));
         }
     }
 }
