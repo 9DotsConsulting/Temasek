@@ -1,4 +1,4 @@
-tableextension 50102 "Customer Extension" extends Customer
+tableextension 50102 "DOT Customer" extends Customer
 {
     fields
     {
@@ -16,7 +16,6 @@ tableextension 50102 "Customer Extension" extends Customer
         field(50105; "Indicator No."; Code[10])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "DOT Individual Indicator";
         }
 
         field(50106; "Type No."; Code[10])

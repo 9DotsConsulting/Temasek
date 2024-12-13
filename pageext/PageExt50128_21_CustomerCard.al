@@ -19,12 +19,10 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
                         case Rec."ID Type No." of
                             '1':
                                 begin
-                                    Rec."ID No." := 'S/T';
                                     Rec."Indicator No." := 'IND';
                                 end;
                             '2':
                                 begin
-                                    Rec."ID No." := 'F/G/M';
                                     Rec."Indicator No." := 'IND';
                                 end;
                             '5':
@@ -60,15 +58,34 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
                     ApplicationArea = All;
 
                     trigger OnValidate()
+                    var
+                        IDNo: Text[20];
                     begin
                         if Rec."ID No." = '' then
                             Error('ID No. is mandatory!');
+
+                        IDNo := Rec."ID No.";
+                        case Rec."ID Type No." of
+                            '1':
+                                begin
+                                    If not IDNo.contains('S') AND not IDNo.contains('T') then
+                                        Error('ID No. prefix must be S or T');
+                                end;
+
+                            '2':
+                                begin
+                                    If not IDNo.contains('F') AND not IDNo.contains('G') AND not IDNo.contains('M') then
+                                        Error('ID No. prefix must be F, G or T');
+                                end;
+                        end;
                     end;
                 }
-                field("Indicator No."; Rec."Indicator No.")
+                field("Indicator No.";
+                Rec."Indicator No.")
                 {
                     Caption = 'Individual Indicator';
                     ApplicationArea = All;
+                    Editable = false;
 
                     trigger OnValidate()
                     begin
@@ -110,10 +127,12 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
             action("Email List")
             {
                 Visible = ActionVisible;
-                Caption = 'Email List';
+                Caption = 'Donor Email List';
                 ApplicationArea = Suite;
                 Image = Email;
                 RunObject = Page "DOT Donor Email List";
+                RunPageLink = "Donor No." = field("No.");
+
             }
         }
         addafter("Item References_Promoted")

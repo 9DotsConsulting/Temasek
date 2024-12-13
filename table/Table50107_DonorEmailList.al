@@ -4,6 +4,11 @@ table 50107 "DOT Donor Email List"
 
     fields
     {
+        field(50100; "Donor No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+
+        }
         field(50102; Email; Text[100])
         {
             DataClassification = ToBeClassified;
@@ -17,7 +22,7 @@ table 50107 "DOT Donor Email List"
 
     keys
     {
-        key(Key1; "Email")
+        key(Key1; "Donor No.", "Email")
         {
             Clustered = true;
         }
