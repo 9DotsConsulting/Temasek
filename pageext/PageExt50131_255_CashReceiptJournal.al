@@ -136,4 +136,29 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     //         exit(DonorInfo);
     // end;
 
+    local procedure setIRASAmt(): Decimal
+    var
+        GenJnlBatch: Record "Gen. Journal Batch";
+        GenJnlLine: Record "Gen. Journal Line";
+    begin
+
+        GenJnlBatch.Reset();
+        GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+        GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
+
+        GenJnlLine.Reset();
+        GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+        GenJnlLine.SetRange("Line No.");
+        if GenJnlBatch.FindFirst() then begin
+            if GenJnlLine.FindSet() then begin
+                repeat
+
+                    GenJnlLine.IRASAmt := Round(-Rec.Amount, 1, '>');
+
+                    GenJnlLine.Modify();
+                until GenJnlLine.Next() = 0;
+            end;
+        end;
+    end;
 }
