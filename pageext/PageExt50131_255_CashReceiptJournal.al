@@ -41,6 +41,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
         {
             field(IRASAmt; Rec.IRASAmt)
             {
+                //Round(-Rec.Amount, 1, '>')
                 //Editable = false;
                 ApplicationArea = Basic, Suite;
             }
@@ -62,4 +63,77 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
             }
         }
     }
+    //Modify a field that initialize other field
+    // trigger OnAfterGetRecord()
+    // var
+    //     GenJnlLine: Record "Gen. Journal Line";
+    // begin
+    //     //"Journal Template Name", "Journal Batch Name", "Line No."
+    //     GenJnlLine.Reset();
+    //     GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
+    //     GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+    //     GenJnlLine.SetRange("Line No.");
+    //     if GenJnlLine.FindSet() then begin
+    //         repeat
+    //             GenJnlLine.IRASAmt := Abs(Round(GenJnlLine.Amount, 1, '>'));
+    //             GenJnlLine.Modify();
+    //         until GenJnlLine.Next() = 0;
+    //     end;
+    // end;
+
+    trigger OnAfterGetRecord()
+    var
+    begin
+        setDonorInfo();
+    end;
+
+    local procedure setDonorInfo()
+    var
+        GenJnlBatch: Record "Gen. Journal Batch";
+        GenJnlLine: Record "Gen. Journal Line";
+        DonorInfo: Record Employee;
+    begin
+
+        GenJnlBatch.Reset();
+        GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+        GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
+
+        //"Journal Template Name", "Journal Batch Name", "Line No."
+        GenJnlLine.Reset();
+        GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+        GenJnlLine.SetRange("Line No.");
+        if GenJnlBatch.FindFirst() then begin
+            if GenJnlLine.FindSet() then begin
+                repeat
+                    DonorInfo.Reset();
+                    DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
+                    if DonorInfo.FindFirst() then begin
+                        GenJnlLine.AuthorisedPersonIDNo := DonorInfo."No.";
+                        GenJnlLine.AuthorisedPersonName := DonorInfo."First Name";
+                        GenJnlLine.Telephone := DonorInfo."Phone No.";
+                        GenJnlLine.AuthorisedPersonEmail := DonorInfo."E-Mail";
+                    end else begin
+                        GenJnlLine.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
+                        GenJnlLine.AuthorisedPersonName := '';
+                        GenJnlLine.Telephone := '';
+                        GenJnlLine.AuthorisedPersonEmail := '';
+                    end;
+
+                until GenJnlLine.Next() = 0;
+            end;
+        end;
+
+    end;
+
+    // local procedure getDonorInfo(ID: Code[20]): Record Employee
+    // var
+    //     DonorInfo: Record Employee;
+    // begin
+    //     DonorInfo.Reset();
+    //     DonorInfo.SetRange("No.", ID);
+    //     if DonorInfo.FindFirst() then
+    //         exit(DonorInfo);
+    // end;
+
 }
