@@ -119,7 +119,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
                         GenJnlLine.Telephone := '';
                         GenJnlLine.AuthorisedPersonEmail := '';
                     end;
-
+                    GenJnlLine.Modify();
                 until GenJnlLine.Next() = 0;
             end;
         end;
