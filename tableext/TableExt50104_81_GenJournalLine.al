@@ -56,4 +56,52 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
             DataClassification = ToBeClassified;
         }
     }
+
+    trigger OnAfterModify()
+    var
+    begin
+        //getDonorInfo();
+    end;
+
+    procedure getDonorInfo()
+    var
+        GenJnlBatch: Record "Gen. Journal Batch";
+        GenJnlLine: Record "Gen. Journal Line";
+        DonorInfo: Record Employee;
+    begin
+
+        GenJnlBatch.Reset();
+        GenJnlBatch.SetRange("DOT Donor Used", true);
+        if GenJnlBatch.FindSet() then begin
+            repeat
+
+                GenJnlLine.Reset();
+                GenJnlLine.SetRange("Journal Template Name", GenJnlBatch."Journal Template Name");
+                GenJnlLine.SetRange("Journal Batch Name", GenJnlBatch.Name);
+                GenJnlLine.SetRange("Line No.");
+                if GenJnlLine.FindSet() then begin
+                    repeat
+
+                        DonorInfo.Reset();
+                        DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
+                        if DonorInfo.FindFirst() then begin
+                            GenJnlLine.AuthorisedPersonIDNo := DonorInfo."No.";
+                            GenJnlLine.AuthorisedPersonName := DonorInfo."First Name";
+                            GenJnlLine.Telephone := DonorInfo."Phone No.";
+                            GenJnlLine.AuthorisedPersonEmail := DonorInfo."E-Mail";
+                        end else begin
+                            GenJnlLine.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
+                            GenJnlLine.AuthorisedPersonName := '';
+                            GenJnlLine.Telephone := '';
+                            GenJnlLine.AuthorisedPersonEmail := '';
+                        end;
+                        GenJnlLine.Modify();
+                    until GenJnlLine.Next() = 0;
+                end;
+
+            until GenJnlBatch.Next() = 0;
+
+        end;
+
+    end;
 }

@@ -11,6 +11,7 @@ pageextension 50129 "DOT Company Information" extends "Company Information"
                 trigger OnValidate()
                 var
                     GenJnlBatch: Record "Gen. Journal Batch";
+                    GenJnlLine: Record "Gen. Journal Line";
                 begin
                     GenJnlBatch.Reset();
                     GenJnlBatch.SetRange("DOT Donor Used", true);
@@ -22,6 +23,7 @@ pageextension 50129 "DOT Company Information" extends "Company Information"
 
                         until GenJnlBatch.Next() = 0;
 
+                        GenJnlLine.getDonorInfo();
                     end;
                 end;
             }

@@ -84,10 +84,11 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     trigger OnAfterGetRecord()
     var
     begin
-        setDonorInfo();
+        getDonorInfo();
     end;
 
-    local procedure setDonorInfo()
+
+    local procedure getDonorInfo()
     var
         GenJnlBatch: Record "Gen. Journal Batch";
         GenJnlLine: Record "Gen. Journal Line";

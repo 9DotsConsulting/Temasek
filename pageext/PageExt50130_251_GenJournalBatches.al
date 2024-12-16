@@ -12,6 +12,7 @@ pageextension 50130 "DOT Gen. Journal Batches" extends "General Journal Batches"
                 trigger OnValidate()
                 var
                     CompInfo: Record "Company Information";
+                    GenJnlLine: Record "Gen. Journal Line";
                 begin
                     if Rec."DOT Donor Used" then begin
                         if CompInfo.Get() then begin
@@ -19,6 +20,8 @@ pageextension 50130 "DOT Gen. Journal Batches" extends "General Journal Batches"
                         end;
                     end else
                         Rec."DOT Authorized Id" := '';
+
+                    GenJnlLine.getDonorInfo();
                 end;
                 //For FDD 4.3 - end
             }
