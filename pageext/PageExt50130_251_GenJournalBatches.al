@@ -7,6 +7,8 @@ pageextension 50130 "DOT Gen. Journal Batches" extends "General Journal Batches"
             field("DOT Donor Used"; Rec."DOT Donor Used")
             {
                 ApplicationArea = basic;
+
+                //For FDD 4.3 - start
                 trigger OnValidate()
                 var
                     CompInfo: Record "Company Information";
@@ -18,11 +20,14 @@ pageextension 50130 "DOT Gen. Journal Batches" extends "General Journal Batches"
                     end else
                         Rec."DOT Authorized Id" := '';
                 end;
+                //For FDD 4.3 - end
             }
             field("DOT Batch Indicator"; Rec."DOT Batch Indicator") { ApplicationArea = basic; }
             field("DOT Authorized Id"; Rec."DOT Authorized Id")
             {
                 ApplicationArea = basic;
+
+                //For FDD 4.3 - start
                 trigger OnValidate()
                 var
                     GenJnlBatch: Record "Gen. Journal Batch";
@@ -61,6 +66,7 @@ pageextension 50130 "DOT Gen. Journal Batches" extends "General Journal Batches"
                     end;
 
                 end;
+                //For FDD 4.3 - end
             }
         }
     }
