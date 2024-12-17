@@ -85,7 +85,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
                                 begin
                                     Employee.Reset();
                                     if Page.RunModal(Page::"Employee List", Employee) = Action::LookupOK then
-                                        Rec."Account No." := AllocationAcc."No.";
+                                        Rec."Account No." := Employee."No.";
                                 end;
                         end;
                     end;
