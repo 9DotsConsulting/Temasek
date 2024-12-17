@@ -62,6 +62,22 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
                 ApplicationArea = Basic, Suite;
             }
         }
+
+        modify(Amount)
+        {
+            trigger OnAfterValidate()
+            begin
+                //setIRASAmt();
+            end;
+        }
+        modify("Amount (LCY)")
+        {
+            trigger OnAfterValidate()
+            begin
+                //setIRASAmt();
+            end;
+
+        }
     }
     //Modify a field that initialize other field
     // trigger OnAfterGetRecord()
@@ -85,6 +101,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     var
     begin
         getDonorInfo();
+        //setIRASAmt();
     end;
 
 
@@ -137,7 +154,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     //         exit(DonorInfo);
     // end;
 
-    local procedure setIRASAmt(): Decimal
+    local procedure setIRASAmt()
     var
         GenJnlBatch: Record "Gen. Journal Batch";
         GenJnlLine: Record "Gen. Journal Line";
@@ -155,11 +172,12 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
             if GenJnlLine.FindSet() then begin
                 repeat
 
-                    GenJnlLine.IRASAmt := Round(-Rec.Amount, 1, '>');
+                    GenJnlLine.IRASAmt := Round(-GenJnlLine.Amount, 1, '>');
 
                     GenJnlLine.Modify();
                 until GenJnlLine.Next() = 0;
             end;
         end;
     end;
+
 }

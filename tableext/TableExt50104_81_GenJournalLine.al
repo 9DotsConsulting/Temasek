@@ -55,6 +55,21 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
             Caption = 'Email Status';
             DataClassification = ToBeClassified;
         }
+
+        modify(Amount)
+        {
+            trigger OnAfterValidate()
+            begin
+                IRASAmt := Round(-Amount, 1, '>');
+            end;
+        }
+        modify("Amount (LCY)")
+        {
+            trigger OnAfterValidate()
+            begin
+                IRASAmt := Round(-"Amount (LCY)", 1, '>');
+            end;
+        }
     }
 
     trigger OnAfterModify()
