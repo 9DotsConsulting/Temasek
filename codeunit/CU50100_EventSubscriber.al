@@ -24,37 +24,6 @@ codeunit 50100 EventSubscriber
             GenJournalLine.AuthorisedPersonEmail := '';
         end;
 
-
-        // GenJnlBatch.Reset();
-        // GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
-        // GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
-
-        // //"Journal Template Name", "Journal Batch Name", "Line No."
-        // GenJnlLine.Reset();
-        // GenJnlLine.SetRange("Journal Template Name", Rec."Journal Template Name");
-        // GenJnlLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
-        // GenJnlLine.SetRange("Line No.");
-        // if GenJnlBatch.FindFirst() then begin
-        //     if GenJnlLine.FindSet() then begin
-        //         repeat
-        //             DonorInfo.Reset();
-        //             DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
-        //             if DonorInfo.FindFirst() then begin
-        //                 GenJnlLine.AuthorisedPersonIDNo := DonorInfo."No.";
-        //                 GenJnlLine.AuthorisedPersonName := DonorInfo."First Name";
-        //                 GenJnlLine.Telephone := DonorInfo."Phone No.";
-        //                 GenJnlLine.AuthorisedPersonEmail := DonorInfo."E-Mail";
-        //             end else begin
-        //                 GenJnlLine.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
-        //                 GenJnlLine.AuthorisedPersonName := '';
-        //                 GenJnlLine.Telephone := '';
-        //                 GenJnlLine.AuthorisedPersonEmail := '';
-        //             end;
-        //             GenJnlLine.Modify();
-        //         until GenJnlLine.Next() = 0;
-        //     end;
-        // end;
-
     end;
 
 }
