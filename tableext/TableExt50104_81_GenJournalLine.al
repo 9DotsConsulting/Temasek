@@ -70,6 +70,36 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
                 IRASAmt := Round(-"Amount (LCY)", 1, '>');
             end;
         }
+
+        // modify("Account No.")
+        // {
+        //     trigger OnAfterValidate()
+        //     var
+        //         GenJnlBatch: Record "Gen. Journal Batch";
+        //         DonorInfo: Record Employee;
+        //     begin
+        //         GenJnlBatch.Reset();
+        //         GenJnlBatch.SetRange("Journal Template Name", "Journal Template Name");
+        //         GenJnlBatch.SetRange(Name, "Journal Batch Name");
+        //         if GenJnlBatch.FindSet() then begin
+
+        //             DonorInfo.Reset();
+        //             DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
+        //             if DonorInfo.FindFirst() then begin
+        //                 AuthorisedPersonIDNo := DonorInfo."No.";
+        //                 AuthorisedPersonName := DonorInfo."First Name";
+        //                 Telephone := DonorInfo."Phone No.";
+        //                 AuthorisedPersonEmail := DonorInfo."E-Mail";
+        //             end else begin
+        //                 AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
+        //                 AuthorisedPersonName := '';
+        //                 Telephone := '';
+        //                 AuthorisedPersonEmail := '';
+        //             end;
+
+        //         end;
+        //     end;
+        // }
     }
 
     trigger OnAfterModify()

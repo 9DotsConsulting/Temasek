@@ -7,10 +7,36 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
             trigger OnLookup(var Text: Text): Boolean
             var
                 Customer: Record Customer;
+
+                GenJnlBatch: Record "Gen. Journal Batch";
+                GenJnlLine: Record "Gen. Journal Line";
+                DonorInfo: Record Employee;
             begin
                 Customer.SetFilter("No.", '*DNO*');
-                if Page.RunModal(Page::"Customer List", Customer) = Action::LookupOK then
+                if Page.RunModal(Page::"Customer List", Customer) = Action::LookupOK then begin
                     Rec."Account No." := Customer."No.";
+
+                    GenJnlBatch.Reset();
+                    GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
+                    if GenJnlBatch.FindSet() then begin
+
+                        DonorInfo.Reset();
+                        DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
+                        if DonorInfo.FindFirst() then begin
+                            Rec.AuthorisedPersonIDNo := DonorInfo."No.";
+                            Rec.AuthorisedPersonName := DonorInfo."First Name";
+                            Rec.Telephone := DonorInfo."Phone No.";
+                            Rec.AuthorisedPersonEmail := DonorInfo."E-Mail";
+
+                        end else begin
+                            Rec.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
+                            Rec.AuthorisedPersonName := '';
+                            Rec.Telephone := '';
+                            Rec.AuthorisedPersonEmail := '';
+                        end;
+                    end;
+                end;
             end;
         }
         addafter("Account No.")
@@ -103,6 +129,7 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
         getDonorInfo();
         //setIRASAmt();
     end;
+
 
 
     local procedure getDonorInfo()
