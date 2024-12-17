@@ -91,26 +91,26 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
                     end;
                     //FDD 4.2 End
 
-                    GenJnlBatch.Reset();
-                    GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
-                    GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
-                    if GenJnlBatch.FindSet() then begin
+                    // GenJnlBatch.Reset();
+                    // GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    // GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
+                    // if GenJnlBatch.FindSet() then begin
 
-                        DonorInfo.Reset();
-                        DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
-                        if DonorInfo.FindFirst() then begin
-                            Rec.AuthorisedPersonIDNo := DonorInfo."No.";
-                            Rec.AuthorisedPersonName := DonorInfo."First Name";
-                            Rec.Telephone := DonorInfo."Phone No.";
-                            Rec.AuthorisedPersonEmail := DonorInfo."E-Mail";
+                    //     DonorInfo.Reset();
+                    //     DonorInfo.SetRange("No.", GenJnlBatch."DOT Authorized Id");
+                    //     if DonorInfo.FindFirst() then begin
+                    //         Rec.AuthorisedPersonIDNo := DonorInfo."No.";
+                    //         Rec.AuthorisedPersonName := DonorInfo."First Name";
+                    //         Rec.Telephone := DonorInfo."Phone No.";
+                    //         Rec.AuthorisedPersonEmail := DonorInfo."E-Mail";
 
-                        end else begin
-                            Rec.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
-                            Rec.AuthorisedPersonName := '';
-                            Rec.Telephone := '';
-                            Rec.AuthorisedPersonEmail := '';
-                        end;
-                    end;
+                    //     end else begin
+                    //         Rec.AuthorisedPersonIDNo := GenJnlBatch."DOT Authorized Id";
+                    //         Rec.AuthorisedPersonName := '';
+                    //         Rec.Telephone := '';
+                    //         Rec.AuthorisedPersonEmail := '';
+                    //     end;
+                    // end;
                 end;
             end;
         }
