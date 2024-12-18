@@ -26,8 +26,7 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
                     repeat
                         DonorAmount += DCLE.Amount;
                     until DCLE.Next = 0;
-                DonorAmount := -DonorAmount;
-
+                if DonorAmount < 0 then DonorAmount := -DonorAmount;
                 Employee.Reset();
                 Employee.SetRange("No.", CompanyInfo."Donor Authorised");
                 if Employee.FindFirst() then begin
