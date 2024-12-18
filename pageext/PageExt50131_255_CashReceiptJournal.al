@@ -30,8 +30,13 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
                         Customer.Reset();
                         Customer.SetFilter("No.", '@DNO*');
                         if Customer.FindSet() then begin
-                            if Page.RunModal(Page::"Customer List", Customer) = Action::LookupOK then
+                            if Page.RunModal(Page::"Customer List", Customer) = Action::LookupOK then begin
                                 Rec."Account No." := Customer."No.";
+
+                                //Assign Donor Emails
+                                Rec."Donor Email" := getDonorEmails(Rec."Account No.");
+
+                            end;
                         end;
                     end else begin
                         case Rec."Account Type" of
@@ -255,6 +260,30 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     //     if DonorInfo.FindFirst() then
     //         exit(DonorInfo);
     // end;
+
+    local procedure getDonorEmails(DonorNo: Code[20]): Text
+    var
+        DonorEmailList: Record "DOT Donor Email List";
+        ReturnTxt: Text;
+    begin
+        ReturnTxt := '';
+        DonorEmailList.Reset();
+        DonorEmailList.SetRange("Donor No.", DonorNo);
+        DonorEmailList.SetRange(Default, true);
+        if DonorEmailList.FindSet() then begin
+            repeat
+
+                if (ReturnTxt <> '') then
+                    ReturnTxt := ReturnTxt + ';';
+                ReturnTxt := ReturnTxt + DonorEmailList.Email;
+
+            until DonorEmailList.Next() = 0;
+            exit(ReturnTxt);
+        end
+        else
+            exit('');
+
+    end;
 
     local procedure setIRASAmt()
     var

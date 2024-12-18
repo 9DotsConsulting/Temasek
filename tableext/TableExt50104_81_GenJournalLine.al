@@ -44,7 +44,8 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
             Caption = 'Tax E';
             DataClassification = ToBeClassified;
         }
-        field(50107; "Donor Email"; Text[50])
+        //Max Donor Email length is 100 each and Max total email is 5 per Donor Email field and plus one ; between each Email
+        field(50107; "Donor Email"; Text[505])
         {
             Caption = 'Donor Email';
             DataClassification = ToBeClassified;
@@ -108,11 +109,14 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
         //getDonorInfo();
     end;
 
+
+    //TODO: Add Emails from Email list to Email column in gen jnl line
     procedure getDonorInfo()
     var
         GenJnlBatch: Record "Gen. Journal Batch";
         GenJnlLine: Record "Gen. Journal Line";
         DonorInfo: Record Employee;
+        DonorEmailList: Record "DOT Donor Email List";
     begin
 
         GenJnlBatch.Reset();

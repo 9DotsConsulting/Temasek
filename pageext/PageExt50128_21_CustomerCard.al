@@ -115,6 +115,16 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
                             Error('Naming Donation is mandatory!');
                     end;
                 }
+
+                #region Donor Email
+
+                part(DonorEmailList; "DOT Donor Email List Page")
+                {
+                    ApplicationArea = Suite;
+                    SubPageLink = "Donor No." = field("No.");
+                }
+
+                #endregion Donor Email
             }
         }
 
