@@ -8,6 +8,7 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
             column(DonorAuthTitle; DonorAuthTitle) { }
             column(DonorAmount; DonorAmount) { }
             column(CompanyRegNo; CompanyInfo."Registration No.") { }
+            column(CustAddress; CompanyInfo.City + ' ' + CompanyInfo."Post Code") { }
         }
         modify("Cust. Ledger Entry")
         {
@@ -17,16 +18,16 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
                 DCLE: Record "Detailed Cust. Ledg. Entry";
                 Employee: Record Employee;
             begin
-                Clear(DonorAmount);
-                DCLE.Reset();
-                DCLE.SetRange("Applied Cust. Ledger Entry No.", "Cust. Ledger Entry"."Entry No.");
-                DCLE.SetRange("Cust. Ledger Entry No.", "Cust. Ledger Entry"."Entry No.");
-                DCLE.SetRange("Document Type", "Gen. Journal Document Type"::Payment);
-                if DCLE.FindSet then
-                    repeat
-                        DonorAmount += DCLE.Amount;
-                    until DCLE.Next = 0;
-                if DonorAmount < 0 then DonorAmount := -DonorAmount;
+                // Clear(DonorAmount);
+                // DCLE.Reset();
+                // DCLE.SetRange("Applied Cust. Ledger Entry No.", "Cust. Ledger Entry"."Entry No.");
+                // DCLE.SetRange("Cust. Ledger Entry No.", "Cust. Ledger Entry"."Entry No.");
+                // DCLE.SetRange("Document Type", "Gen. Journal Document Type"::Payment);
+                // if DCLE.FindSet then
+                //     repeat
+                //         DonorAmount += DCLE.Amount;
+                //     until DCLE.Next = 0;
+                // if DonorAmount < 0 then DonorAmount := -DonorAmount;
                 Employee.Reset();
                 Employee.SetRange("No.", CompanyInfo."Donor Authorised");
                 if Employee.FindFirst() then begin
@@ -53,5 +54,5 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
     }
     var
         DonorAmount: Decimal;
-        DonorAuthName, DonorAuthTitle : Text;
+        DonorAuthName, DonorAuthTitle, CustAddress : Text;
 }
