@@ -10,6 +10,247 @@
       <rd:DataSourceID>ffdacec3-061e-4106-b964-669bb53e5b56</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="EntryNo_CustLedgEntry">
+          <DataField>EntryNo_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="CustAddr6">
+          <DataField>CustAddr6</DataField>
+        </Field>
+        <Field Name="CustAddr7">
+          <DataField>CustAddr7</DataField>
+        </Field>
+        <Field Name="CustAddr8">
+          <DataField>CustAddr8</DataField>
+        </Field>
+        <Field Name="CustAddr4">
+          <DataField>CustAddr4</DataField>
+        </Field>
+        <Field Name="CustAddr5">
+          <DataField>CustAddr5</DataField>
+        </Field>
+        <Field Name="CustAddr3">
+          <DataField>CustAddr3</DataField>
+        </Field>
+        <Field Name="CustAddr1">
+          <DataField>CustAddr1</DataField>
+        </Field>
+        <Field Name="CustAddr2">
+          <DataField>CustAddr2</DataField>
+        </Field>
+        <Field Name="CustomerNo_CustLedgEntry">
+          <DataField>CustomerNo_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="DocDate_CustLedgEntry">
+          <DataField>DocDate_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="CompanyAddr7">
+          <DataField>CompanyAddr7</DataField>
+        </Field>
+        <Field Name="CompanyAddr8">
+          <DataField>CompanyAddr8</DataField>
+        </Field>
+        <Field Name="CompanyInfoEMail">
+          <DataField>CompanyInfoEMail</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoHomePage">
+          <DataField>CompanyInfoHomePage</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNo">
+          <DataField>CompanyInfoVATRegNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNo">
+          <DataField>CompanyInfoGiroNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankName">
+          <DataField>CompanyInfoBankName</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccountNo">
+          <DataField>CompanyInfoBankAccountNo</DataField>
+        </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+        </Field>
+        <Field Name="DocumentNo_CustLedgEntry">
+          <DataField>DocumentNo_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="PaymentDiscountTitle">
+          <DataField>PaymentDiscountTitle</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNoCaption">
+          <DataField>CompanyInfoPhoneNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNoCaption">
+          <DataField>CompanyInfoGiroNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankNameCptn">
+          <DataField>CompanyInfoBankNameCptn</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccNoCptn">
+          <DataField>CompanyInfoBankAccNoCptn</DataField>
+        </Field>
+        <Field Name="ReceiptNoCaption">
+          <DataField>ReceiptNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNoCptn">
+          <DataField>CompanyInfoVATRegNoCptn</DataField>
+        </Field>
+        <Field Name="CustLedgEntry1PostDtCptn">
+          <DataField>CustLedgEntry1PostDtCptn</DataField>
+        </Field>
+        <Field Name="AmountCaption">
+          <DataField>AmountCaption</DataField>
+        </Field>
+        <Field Name="PaymAmtSpecificationCptn">
+          <DataField>PaymAmtSpecificationCptn</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurrCaption">
+          <DataField>PmtTolInvCurrCaption</DataField>
+        </Field>
+        <Field Name="DocumentDateCaption">
+          <DataField>DocumentDateCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoEMailCaption">
+          <DataField>CompanyInfoEMailCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoHomePageCptn">
+          <DataField>CompanyInfoHomePageCptn</DataField>
+        </Field>
+        <Field Name="PostDate_CustLedgEntry1">
+          <DataField>PostDate_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocType_CustLedgEntry1">
+          <DataField>DocType_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocumentNo_CustLedgEntry1">
+          <DataField>DocumentNo_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="Desc_CustLedgEntry1">
+          <DataField>Desc_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="CurrCode_CustLedgEntry1">
+          <DataField>CurrCode_CustLedgEntry1</DataField>
+        </Field>
+        <Field Name="ShowAmount">
+          <DataField>ShowAmount</DataField>
+        </Field>
+        <Field Name="ShowAmountFormat">
+          <DataField>ShowAmountFormat</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr">
+          <DataField>PmtDiscInvCurr</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurrFormat">
+          <DataField>PmtDiscInvCurrFormat</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr">
+          <DataField>PmtTolInvCurr</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurrFormat">
+          <DataField>PmtTolInvCurrFormat</DataField>
+        </Field>
+        <Field Name="CurrencyCodeCaption">
+          <DataField>CurrencyCodeCaption</DataField>
+        </Field>
+        <Field Name="AppliedAmount">
+          <DataField>AppliedAmount</DataField>
+        </Field>
+        <Field Name="AppliedAmountFormat">
+          <DataField>AppliedAmountFormat</DataField>
+        </Field>
+        <Field Name="Desc_CustLedgEntry2">
+          <DataField>Desc_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocumentNo_CustLedgEntry2">
+          <DataField>DocumentNo_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocType_CustLedgEntry2">
+          <DataField>DocType_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="PostDate_CustLedgEntry2">
+          <DataField>PostDate_CustLedgEntry2</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr1">
+          <DataField>PmtDiscInvCurr1</DataField>
+        </Field>
+        <Field Name="PmtDiscInvCurr1Format">
+          <DataField>PmtDiscInvCurr1Format</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr1">
+          <DataField>PmtTolInvCurr1</DataField>
+        </Field>
+        <Field Name="PmtTolInvCurr1Format">
+          <DataField>PmtTolInvCurr1Format</DataField>
+        </Field>
+        <Field Name="RemainingAmount">
+          <DataField>RemainingAmount</DataField>
+        </Field>
+        <Field Name="RemainingAmountFormat">
+          <DataField>RemainingAmountFormat</DataField>
+        </Field>
+        <Field Name="CurrCode_CustLedgEntry">
+          <DataField>CurrCode_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="OriginalAmt_CustLedgEntry">
+          <DataField>OriginalAmt_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="OriginalAmt_CustLedgEntryFormat">
+          <DataField>OriginalAmt_CustLedgEntryFormat</DataField>
+        </Field>
+        <Field Name="ExtDocNo_CustLedgEntry">
+          <DataField>ExtDocNo_CustLedgEntry</DataField>
+        </Field>
+        <Field Name="PaymAmtNotAllocatedCptn">
+          <DataField>PaymAmtNotAllocatedCptn</DataField>
+        </Field>
+        <Field Name="CustLedgEntryOrgAmtCptn">
+          <DataField>CustLedgEntryOrgAmtCptn</DataField>
+        </Field>
+        <Field Name="ExternalDocumentNoCaption">
+          <DataField>ExternalDocumentNoCaption</DataField>
+        </Field>
+        <Field Name="DonorAuthorised">
+          <DataField>DonorAuthorised</DataField>
+        </Field>
+        <Field Name="DonorAmount">
+          <DataField>DonorAmount</DataField>
+        </Field>
+        <Field Name="DonorAmountFormat">
+          <DataField>DonorAmountFormat</DataField>
+        </Field>
+        <Field Name="CompanyRegNo">
+          <DataField>CompanyRegNo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -23,7 +264,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>11.44288cm</Height>
+                  <Height>13.49278cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -189,7 +430,7 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                 </TablixColumns>
                                 <TablixRows>
                                   <TablixRow>
-                                    <Height>0.12906cm</Height>
+                                    <Height>0.14994cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -224,7 +465,7 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>11.31382cm</Height>
+                                    <Height>13.34284cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -307,6 +548,17 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                                     </Style>
                                                   </TextRun>
                                                   <TextRun>
+                                                    <Label>Amount</Label>
+                                                    <Value>=Fields!DonorAmount.Value</Value>
+                                                    <Style>
+                                                      <FontStyle>Normal</FontStyle>
+                                                      <FontFamily>arial</FontFamily>
+                                                      <FontSize>12pt</FontSize>
+                                                      <FontWeight>Normal</FontWeight>
+                                                      <Format>n2</Format>
+                                                    </Style>
+                                                  </TextRun>
+                                                  <TextRun>
                                                     <Value xml:space="preserve"> </Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
@@ -335,7 +587,7 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                                       <FontFamily>arial</FontFamily>
                                                       <FontSize>12pt</FontSize>
                                                       <FontWeight>Normal</FontWeight>
-                                                      <Format>d</Format>
+                                                      <Format>dd MMMM yyyy</Format>
                                                       <TextDecoration>None</TextDecoration>
                                                     </Style>
                                                   </TextRun>
@@ -615,8 +867,8 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Label>DonorAuthorised</Label>
-                                                    <Value>=Fields!DonorAuthorised.Value</Value>
+                                                    <Label>Authorised Name</Label>
+                                                    <Value>=Fields!DonorAuthName.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>arial</FontFamily>
@@ -634,7 +886,8 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Label>Title</Label>
+                                                    <Value>=Fields!DonorAuthTitle.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>arial</FontFamily>
@@ -675,9 +928,8 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>arial</FontFamily>
                                                       <FontSize>12pt</FontSize>
-                                                      <FontWeight>Normal</FontWeight>
+                                                      <FontWeight>Bold</FontWeight>
                                                       <Format>d</Format>
-                                                      <TextDecoration>None</TextDecoration>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -693,9 +945,8 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>arial</FontFamily>
                                                       <FontSize>12pt</FontSize>
-                                                      <FontWeight>Normal</FontWeight>
+                                                      <FontWeight>Bold</FontWeight>
                                                       <Format>d</Format>
-                                                      <TextDecoration>None</TextDecoration>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -711,9 +962,8 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>arial</FontFamily>
                                                       <FontSize>12pt</FontSize>
-                                                      <FontWeight>Normal</FontWeight>
+                                                      <FontWeight>Bold</FontWeight>
                                                       <Format>d</Format>
-                                                      <TextDecoration>None</TextDecoration>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -760,7 +1010,21 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                               <TablixRowHierarchy>
                                 <TablixMembers>
                                   <TablixMember />
-                                  <TablixMember />
+                                  <TablixMember>
+                                    <Group Name="EntryNo_CustLedgEntry">
+                                      <GroupExpressions>
+                                        <GroupExpression>=Fields!EntryNo_CustLedgEntry.Value</GroupExpression>
+                                      </GroupExpressions>
+                                    </Group>
+                                    <SortExpressions>
+                                      <SortExpression>
+                                        <Value>=Fields!EntryNo_CustLedgEntry.Value</Value>
+                                      </SortExpression>
+                                    </SortExpressions>
+                                    <TablixMembers>
+                                      <TablixMember />
+                                    </TablixMembers>
+                                  </TablixMember>
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet_Result</DataSetName>
@@ -774,7 +1038,7 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                                 </Filter>
                               </Filters>
                               <Left>0.00739in</Left>
-                              <Height>11.44288cm</Height>
+                              <Height>13.49278cm</Height>
                               <Width>17.12729cm</Width>
                               <ZIndex>1</ZIndex>
                               <DataElementOutput>NoOutput</DataElementOutput>
@@ -815,12 +1079,12 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.11859in</Top>
-            <Height>11.44288cm</Height>
+            <Height>13.49278cm</Height>
             <Width>17.14606cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>11.7441cm</Height>
+        <Height>13.794cm</Height>
         <Style />
       </Body>
       <Width>17.14606cm</Width>
@@ -842,8 +1106,10 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                     </TextRun>
                     <TextRun>
                       <Label>DocDate</Label>
-                      <Value>=Code.GetData(4,3)</Value>
-                      <Style />
+                      <Value>=Format(CDate(Code.GetData(4,3)),"dd MMMM yyyy")</Value>
+                      <Style>
+                        <Format>dd MMMM yyyy</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
@@ -994,6 +1260,32 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                 </Border>
               </Style>
             </Textbox>
+            <Textbox Name="Textbox13">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Code.GetData(9,1)</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox5</rd:DefaultName>
+              <Top>1.38569in</Top>
+              <Left>0.01369in</Left>
+              <Height>11pt</Height>
+              <Width>9.08416cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -1048,7 +1340,7 @@ Fields!CompanyInfoBankAccountNo.Value, 2)</Hidden>
                     </TextRun>
                     <TextRun>
                       <Label>Company Reg No</Label>
-                      <Value>=Fields!CompanyInfoVATRegNo.Value</Value>
+                      <Value>=Fields!CompanyRegNo.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -1313,239 +1605,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="EntryNo_CustLedgEntry">
-          <DataField>EntryNo_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="CustAddr6">
-          <DataField>CustAddr6</DataField>
-        </Field>
-        <Field Name="CustAddr7">
-          <DataField>CustAddr7</DataField>
-        </Field>
-        <Field Name="CustAddr8">
-          <DataField>CustAddr8</DataField>
-        </Field>
-        <Field Name="CustAddr4">
-          <DataField>CustAddr4</DataField>
-        </Field>
-        <Field Name="CustAddr5">
-          <DataField>CustAddr5</DataField>
-        </Field>
-        <Field Name="CustAddr3">
-          <DataField>CustAddr3</DataField>
-        </Field>
-        <Field Name="CustAddr1">
-          <DataField>CustAddr1</DataField>
-        </Field>
-        <Field Name="CustAddr2">
-          <DataField>CustAddr2</DataField>
-        </Field>
-        <Field Name="CustomerNo_CustLedgEntry">
-          <DataField>CustomerNo_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="DocDate_CustLedgEntry">
-          <DataField>DocDate_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="CompanyAddr1">
-          <DataField>CompanyAddr1</DataField>
-        </Field>
-        <Field Name="CompanyAddr2">
-          <DataField>CompanyAddr2</DataField>
-        </Field>
-        <Field Name="CompanyAddr3">
-          <DataField>CompanyAddr3</DataField>
-        </Field>
-        <Field Name="CompanyAddr4">
-          <DataField>CompanyAddr4</DataField>
-        </Field>
-        <Field Name="CompanyAddr5">
-          <DataField>CompanyAddr5</DataField>
-        </Field>
-        <Field Name="CompanyAddr6">
-          <DataField>CompanyAddr6</DataField>
-        </Field>
-        <Field Name="CompanyAddr7">
-          <DataField>CompanyAddr7</DataField>
-        </Field>
-        <Field Name="CompanyAddr8">
-          <DataField>CompanyAddr8</DataField>
-        </Field>
-        <Field Name="CompanyInfoEMail">
-          <DataField>CompanyInfoEMail</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNo">
-          <DataField>CompanyInfoPhoneNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoHomePage">
-          <DataField>CompanyInfoHomePage</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNo">
-          <DataField>CompanyInfoVATRegNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNo">
-          <DataField>CompanyInfoGiroNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankName">
-          <DataField>CompanyInfoBankName</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccountNo">
-          <DataField>CompanyInfoBankAccountNo</DataField>
-        </Field>
-        <Field Name="ReportTitle">
-          <DataField>ReportTitle</DataField>
-        </Field>
-        <Field Name="DocumentNo_CustLedgEntry">
-          <DataField>DocumentNo_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="PaymentDiscountTitle">
-          <DataField>PaymentDiscountTitle</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNoCaption">
-          <DataField>CompanyInfoPhoneNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNoCaption">
-          <DataField>CompanyInfoGiroNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankNameCptn">
-          <DataField>CompanyInfoBankNameCptn</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccNoCptn">
-          <DataField>CompanyInfoBankAccNoCptn</DataField>
-        </Field>
-        <Field Name="ReceiptNoCaption">
-          <DataField>ReceiptNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNoCptn">
-          <DataField>CompanyInfoVATRegNoCptn</DataField>
-        </Field>
-        <Field Name="CustLedgEntry1PostDtCptn">
-          <DataField>CustLedgEntry1PostDtCptn</DataField>
-        </Field>
-        <Field Name="AmountCaption">
-          <DataField>AmountCaption</DataField>
-        </Field>
-        <Field Name="PaymAmtSpecificationCptn">
-          <DataField>PaymAmtSpecificationCptn</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurrCaption">
-          <DataField>PmtTolInvCurrCaption</DataField>
-        </Field>
-        <Field Name="DocumentDateCaption">
-          <DataField>DocumentDateCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoEMailCaption">
-          <DataField>CompanyInfoEMailCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoHomePageCptn">
-          <DataField>CompanyInfoHomePageCptn</DataField>
-        </Field>
-        <Field Name="PostDate_CustLedgEntry1">
-          <DataField>PostDate_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocType_CustLedgEntry1">
-          <DataField>DocType_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocumentNo_CustLedgEntry1">
-          <DataField>DocumentNo_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="Desc_CustLedgEntry1">
-          <DataField>Desc_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="CurrCode_CustLedgEntry1">
-          <DataField>CurrCode_CustLedgEntry1</DataField>
-        </Field>
-        <Field Name="ShowAmount">
-          <DataField>ShowAmount</DataField>
-        </Field>
-        <Field Name="ShowAmountFormat">
-          <DataField>ShowAmountFormat</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr">
-          <DataField>PmtDiscInvCurr</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurrFormat">
-          <DataField>PmtDiscInvCurrFormat</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr">
-          <DataField>PmtTolInvCurr</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurrFormat">
-          <DataField>PmtTolInvCurrFormat</DataField>
-        </Field>
-        <Field Name="CurrencyCodeCaption">
-          <DataField>CurrencyCodeCaption</DataField>
-        </Field>
-        <Field Name="AppliedAmount">
-          <DataField>AppliedAmount</DataField>
-        </Field>
-        <Field Name="AppliedAmountFormat">
-          <DataField>AppliedAmountFormat</DataField>
-        </Field>
-        <Field Name="Desc_CustLedgEntry2">
-          <DataField>Desc_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocumentNo_CustLedgEntry2">
-          <DataField>DocumentNo_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocType_CustLedgEntry2">
-          <DataField>DocType_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="PostDate_CustLedgEntry2">
-          <DataField>PostDate_CustLedgEntry2</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr1">
-          <DataField>PmtDiscInvCurr1</DataField>
-        </Field>
-        <Field Name="PmtDiscInvCurr1Format">
-          <DataField>PmtDiscInvCurr1Format</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr1">
-          <DataField>PmtTolInvCurr1</DataField>
-        </Field>
-        <Field Name="PmtTolInvCurr1Format">
-          <DataField>PmtTolInvCurr1Format</DataField>
-        </Field>
-        <Field Name="RemainingAmount">
-          <DataField>RemainingAmount</DataField>
-        </Field>
-        <Field Name="RemainingAmountFormat">
-          <DataField>RemainingAmountFormat</DataField>
-        </Field>
-        <Field Name="CurrCode_CustLedgEntry">
-          <DataField>CurrCode_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="OriginalAmt_CustLedgEntry">
-          <DataField>OriginalAmt_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="OriginalAmt_CustLedgEntryFormat">
-          <DataField>OriginalAmt_CustLedgEntryFormat</DataField>
-        </Field>
-        <Field Name="ExtDocNo_CustLedgEntry">
-          <DataField>ExtDocNo_CustLedgEntry</DataField>
-        </Field>
-        <Field Name="PaymAmtNotAllocatedCptn">
-          <DataField>PaymAmtNotAllocatedCptn</DataField>
-        </Field>
-        <Field Name="CustLedgEntryOrgAmtCptn">
-          <DataField>CustLedgEntryOrgAmtCptn</DataField>
-        </Field>
-        <Field Name="ExternalDocumentNoCaption">
-          <DataField>ExternalDocumentNoCaption</DataField>
-        </Field>
-        <Field Name="DonorAuthorised">
-          <DataField>DonorAuthorised</DataField>
-        </Field>
-        <Field Name="CompanyRegNo">
-          <DataField>CompanyRegNo</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
