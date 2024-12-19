@@ -8,7 +8,11 @@ table 50108 "DOT IRAS Batch Status Lists"
         {
             DataClassification = ToBeClassified;
         }
-        field(50100; "Basis Year"; Integer)
+        field(50100; "Entry No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50101; "Basis Year"; Integer)
         {
             DataClassification = ToBeClassified;
         }
@@ -31,11 +35,6 @@ table 50108 "DOT IRAS Batch Status Lists"
         field(50106; "Recent Date Time"; DateTime)
         {
             DataClassification = ToBeClassified;
-            trigger OnValidate()
-            var
-            begin
-                "Recent Date Time" := Rec.SystemModifiedAt;
-            end;
         }
         field(50107; "Batch Indicator"; Code[20])
         {
@@ -83,11 +82,12 @@ table 50108 "DOT IRAS Batch Status Lists"
         {
             DataClassification = ToBeClassified;
         }
+
     }
 
     keys
     {
-        key(Key1; "List No.", "Basis Year")
+        key(Key1; "List No.", "Entry No.")
         {
             Clustered = true;
         }
