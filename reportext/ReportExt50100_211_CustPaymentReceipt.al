@@ -8,7 +8,8 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
             column(DonorAuthTitle; DonorAuthTitle) { }
             column(DonorAmount; DonorAmount) { }
             column(CompanyRegNo; CompanyInfo."Registration No.") { }
-            column(CustAddress; CompanyInfo.City + ' ' + CompanyInfo."Post Code") { }
+            column(CompanyAddress; CompanyInfo.City + ' ' + CompanyInfo."Post Code") { }
+            column(CustAddress; CustAddress) { }
         }
         modify("Cust. Ledger Entry")
         {
@@ -17,6 +18,7 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
                 CLE: Record "Cust. Ledger Entry";
                 DCLE: Record "Detailed Cust. Ledg. Entry";
                 Employee: Record Employee;
+                Customer: Record Customer;
             begin
                 // Clear(DonorAmount);
                 // DCLE.Reset();
@@ -34,7 +36,14 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
                     DonorAuthName := Employee."First Name" + Employee."Last Name";
                     DonorAuthTitle := Employee."Job Title";
                 end;
+
+                Customer.Get("Customer No.");
+                CustAddress := Customer."Country/Region Code" + ' ' + Customer."Post Code";
             end;
+        }
+        add(Total)
+        {
+            column(RemainingAmt_CustLedgEntry; "Cust. Ledger Entry"."Remaining Amount") { }
         }
     }
 
@@ -54,5 +63,5 @@ reportextension 50100 "DOT Customer Payment Receipt" extends "Customer - Payment
     }
     var
         DonorAmount: Decimal;
-        DonorAuthName, DonorAuthTitle, CustAddress : Text;
+        DonorAuthName, DonorAuthTitle, CustAddress, DocType : Text;
 }
