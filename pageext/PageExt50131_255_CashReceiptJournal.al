@@ -162,6 +162,48 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
             field("Donor Email"; Rec."Donor Email")
             {
                 ApplicationArea = Basic, Suite;
+                trigger OnLookup(var Text: Text): Boolean
+                var
+                    RecRef: RecordRef;
+                    //RecPage: Page "DOT Donor Email List Page";
+                    RecPage: Page "DOT Donor Email List";
+                    RecTable: Record "DOT Donor Email List";
+                    MarkTable: Record "DOT Donor Email List";
+                    MultiSelectCU: Codeunit SelectionFilterManagement;
+                    NewText: Text;
+                begin
+                    Clear(RecPage);
+                    Clear(RecTable);
+                    Clear(RecTable);
+                    RecTable.SetRange("Donor No.", Rec."Account No.");
+                    if RecTable.FindSet() then begin
+                        RecRef.GetTable(RecTable);
+                        RecPage.LookupMode := true;
+                        RecPage.SetTableView(RecTable);
+                        if RecPage.RunModal() = Action::LookupOK then begin
+
+                            RecPage.SetSelectionFilter(RecTable);
+                            repeat
+
+                                if RecTable.Mark() then begin
+
+                                    if NewText <> '' then
+                                        NewText += ';';
+
+                                    NewText += RecTable.Email;
+
+                                end;
+
+                            until RecTable.Next() = 0;
+                            Text := NewText;
+
+                            exit(true);
+                        end else
+                            exit(false);
+                    end;
+
+                end;
+
             }
             field("Email Status"; Rec."Email Status")
             {
