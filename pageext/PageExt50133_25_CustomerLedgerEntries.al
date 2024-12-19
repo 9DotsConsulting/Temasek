@@ -20,23 +20,20 @@ pageextension 50133 "DOT Customer Ledger Entries" extends "Customer Ledger Entri
             {
                 ApplicationArea = All;
             }
-
             field("Authorised Person ID No."; Rec."Authorised Person ID No.")
             {
                 ApplicationArea = All;
+                Editable = false;
             }
             field("Tax E"; Rec."Tax E")
             {
                 ApplicationArea = All;
+                Editable = true;
             }
         }
-        addafter("Customer No.")
+        modify("Customer Name")
         {
-            field("CustomerName"; Rec."Customer Name")
-            {
-                ApplicationArea = All;
-                Caption = 'Name';
-            }
+            Caption = 'Name';
         }
     }
 
@@ -45,20 +42,8 @@ pageextension 50133 "DOT Customer Ledger Entries" extends "Customer Ledger Entri
         Customer: Record Customer;
         GenJnlBatch: Record "Gen. Journal Batch";
     begin
-        if not Customer.get(Rec."Customer No.") then begin
-            Rec."ID No." := '';
-            Rec.Modify();
-        end else begin
-            Rec."ID No." := Customer."ID No.";
-            Rec.Modify();
-        end;
-
-        if not GenJnlBatch.Get(Rec."Journal Batch Name") then begin
-            Rec."Batch Indicator" := '';
-            Rec."Authorised Person ID No." := '';
-        end else begin
-            Rec."Batch Indicator" := GenJnlBatch."DOT Batch Indicator";
-            Rec."Authorised Person ID No." := GenJnlBatch."DOT Authorized Id";
-        end;
+        Rec.IRASAmt := Round(-Rec.Amount, 1, '>');
+        Rec."Remaining IRASAmnt" := Round(-Rec."Remaining Amount", 1, '>');
+        Rec.Modify();
     end;
 }
