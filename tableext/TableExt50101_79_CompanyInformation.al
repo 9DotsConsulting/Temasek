@@ -7,5 +7,11 @@ tableextension 50101 "DOT Company Information" extends "Company Information"
             DataClassification = ToBeClassified;
             TableRelation = Employee where("Donor Authorised" = const(true));
         }
+
+        //FDD 4.3
+        field(50200; "Donor Statement"; Text[2048])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 }

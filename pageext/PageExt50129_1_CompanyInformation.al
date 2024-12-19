@@ -28,5 +28,24 @@ pageextension 50129 "DOT Company Information" extends "Company Information"
                 end;
             }
         }
+
+        addbefore(Payments)
+        {
+            group("Donor Email")
+            {
+                Caption = 'Donor Email';
+
+                Group("Email Donor (Setup)")
+                {
+                    Caption = 'Email Donor (Setup)';
+                    field("Donor Statement"; Rec."Donor Statement")
+                    {
+                        MultiLine = true;
+                        Caption = 'Donor Statement';
+                        ApplicationArea = All;
+                    }
+                }
+            }
+        }
     }
 }
