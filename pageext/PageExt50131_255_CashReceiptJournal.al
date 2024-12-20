@@ -245,6 +245,94 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
     //     end;
     // end;
 
+
+    actions
+    {
+        addafter(Post)
+        {
+            action(Email)
+            {
+                ApplicationArea = All;
+                Caption = 'Email to Donor';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Email;
+                Enabled = false;
+                Visible = false;
+
+                trigger OnAction()
+                var
+                    GenJnlBatch: Record "Gen. Journal Batch";
+                    GenJnlLine: Record "Gen. Journal Line";
+                    CompInfo: Record "Company Information";
+                    EmployeeInfo: Record Employee;
+                begin
+                    //sendDonorEmails();
+
+                    CompInfo.Reset();
+                    GenJnlBatch.Reset();
+                    GenJnlLine.Reset();
+                    EmployeeInfo.Reset();
+
+                    if CompInfo.Get() then begin
+
+                    end;
+
+                    GenJnlBatch.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    GenJnlBatch.SetRange(Name, Rec."Journal Batch Name");
+                    if GenJnlBatch.FindSet() then begin
+
+                        GenJnlLine.SetRange("Journal Template Name", GenJnlBatch."Journal Template Name");
+                        GenJnlLine.SetRange("Journal Batch Name", GenJnlBatch.Name);
+                        GenJnlLine.SetRange("Line No.");
+                        if GenJnlLine.FindSet() then begin
+                            repeat
+
+                                EmployeeInfo.SetRange("No.", GenJnlLine.AuthorisedPersonIDNo); //check why ID is text[12] in FDD when in BC it's Code[20]
+                                if EmployeeInfo.FindFirst() then begin
+
+                                end;
+
+                                sendDonorEmails(GenJnlLine, CompInfo, EmployeeInfo);
+
+                            until GenJnlLine.Next() = 0;
+                        end
+                    end;
+
+                end;
+            }
+            action(TestEmail)
+            {
+                ApplicationArea = All;
+                Caption = 'Email to Test Fixed Emails';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Email;
+                // Enabled = false;
+                // Visible = false;
+
+                trigger OnAction()
+                var
+
+                    CompInfo: Record "Company Information";
+                begin
+
+                    CompInfo.Reset();
+
+                    if CompInfo.Get() then begin
+
+                    end;
+
+                    sendDummyEmail(CompInfo);
+
+                end;
+            }
+        }
+    }
+
+
     trigger OnAfterGetRecord()
     var
     begin
@@ -352,5 +440,82 @@ pageextension 50131 "Cash Receipt Journal Extension" extends "Cash Receipt Journ
             end;
         end;
     end;
+
+    local procedure sendDonorEmails(GenJnlLine: Record "Gen. Journal Line"; CompInfo: Record "Company Information"; EmployeeInfo: Record Employee)
+    var
+        EmailMessage: Codeunit "Email Message";
+        Email: Codeunit Email;
+        EmailAddress: Text;
+        EmailTitle: Text;
+    //EmailBody: Text;
+    //EmailBody: Label 'Dear Sir/Madam,\';
+    begin
+
+
+        EmailTitle := 'Test Email Title [TF]';
+        //EmailBody := 'Test Email Body\New Line\End';
+
+
+        //EmailMessage.Create(EmailAddress, EmailTitle, EmailBody);
+        EmailMessage.Create(EmailAddress, EmailTitle, '');
+
+
+        EmailMessage.AppendToBody(StrSubstNo('Dear Sir/Madam,\\On behalf of %1, I would like to thank you for your donation of %2 %3 on %4.', CompInfo.Name, GenJnlLine."Currency Code", GenJnlLine.IRASAmt, GenJnlLine."Posting Date")); //Company Name, Currency Code, Amount, Donation Date
+        EmailMessage.AppendToBody('We wish to convey our appreciation for your generosity and kindness.\\');
+        EmailMessage.AppendToBody('This official receipt for your donation is for your reference and retention.\\');
+        EmailMessage.AppendToBody(StrSubstNo('%1', CompInfo."Donor Statement")); //Donor statement from CI
+
+        EmailMessage.AppendToBody('We look forward to your continuous support.\');
+        EmailMessage.AppendToBody(StrSubstNo('Please feel free to email us at %1 if you need futher clarification.\\\\', CompInfo."E-Mail")); //Company Email
+
+        EmailMessage.AppendToBody('Yours sincerely,\');
+        EmailMessage.AppendToBody(StrSubstNo('%1\', EmployeeInfo.FullName())); //Authorised person name
+        EmailMessage.AppendToBody(StrSubstNo('%1\', EmployeeInfo.Title)); //Title
+        EmailMessage.AppendToBody(StrSubstNo('%1\', CompInfo.Name)); //Company Name
+
+
+        Email.Send(EmailMessage);
+        //Email.OpenInEditor(EmailMessage);
+
+
+    end;
+
+    local procedure sendDummyEmail(CompInfo: Record "Company Information")
+    var
+        EmailMessage: Codeunit "Email Message";
+        Email: Codeunit Email;
+        EmailAddress: Text;
+        EmailTitle: Text;
+        EmailAddresses: List of [Text];
+    begin
+
+        EmailAddresses.add('afiq.munawir@9dots.com');
+        EmailAddresses.add('jiayi.tee@9dots.com');
+
+
+        EmailTitle := 'Test Email Title [TF]';
+        //EmailMessage.Create(EmailAddress, EmailTitle, '', false);
+        EmailMessage.Create(EmailAddresses, EmailTitle, '', false);
+        EmailMessage.AppendToBody(StrSubstNo('Dear Sir/Madam,\\On behalf of %1, I would like to thank you for your donation of %2 %3 on %4.', CompInfo.Name, 'GenJnlLine."Currency Code"', 'GenJnlLine.IRASAmt', 'GenJnlLine."Posting Date"')); //Company Name, Currency Code, Amount, Donation Date
+        EmailMessage.AppendToBody('We wish to convey our appreciation for your generosity and kindness.\\');
+        EmailMessage.AppendToBody('This official receipt for your donation is for your reference and retention.\\');
+        EmailMessage.AppendToBody(StrSubstNo('%1', CompInfo."Donor Statement")); //Donor statement from CI
+
+        EmailMessage.AppendToBody('We look forward to your continuous support.\');
+        EmailMessage.AppendToBody(StrSubstNo('Please feel free to email us at %1 if you need futher clarification.\\\\', CompInfo."E-Mail")); //Company Email
+
+        EmailMessage.AppendToBody('Yours sincerely,\');
+        EmailMessage.AppendToBody(StrSubstNo('%1\', 'Authorised person name')); //Authorised person name
+        EmailMessage.AppendToBody(StrSubstNo('%1\', 'Title')); //Title
+        EmailMessage.AppendToBody(StrSubstNo('%1\', CompInfo.Name)); //Company Name
+
+
+        if Email.Send(EmailMessage) then
+            Message('Emails have been sent.')
+        else
+            Message('Emails were unabled to be sent.');
+
+    end;
+
 
 }
