@@ -13,5 +13,9 @@ tableextension 50101 "DOT Company Information" extends "Company Information"
         {
             DataClassification = ToBeClassified;
         }
+        field(50101; "Donor Management"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 }

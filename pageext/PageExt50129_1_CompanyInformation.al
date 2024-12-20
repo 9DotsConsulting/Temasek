@@ -27,6 +27,10 @@ pageextension 50129 "DOT Company Information" extends "Company Information"
                     end;
                 end;
             }
+            field("Donor Management"; Rec."Donor Management")
+            {
+                ApplicationArea = All;
+            }
         }
 
         addbefore(Payments)
