@@ -1,4 +1,4 @@
-table 50108 "DOT IRAS Batch Status Lists"
+table 50110 "DOT IRAS Batch Pending Lists"
 {
     DataClassification = ToBeClassified;
 
