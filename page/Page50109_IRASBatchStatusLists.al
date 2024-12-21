@@ -92,60 +92,60 @@ page 50109 "DOT IRAS Batch Status Lists"
         }
     }
 
-    // trigger OnOpenPage()
-    // var
-    //     CustLedgEntries: Record "Cust. Ledger Entry";
-    //     Customer: Record Customer;
-    //     IRASBatchList, IRASBatchList2 : Record "DOT IRAS Batch Status Lists";
-    //     ListMax: Integer;
-    //     TypeNo, NamingNo, IndvIndicator, TypeofDonation : Code[10];
-    // begin
-    //input records to IRAS Batch Status List
-    //     CustLedgEntries.Reset();
-    //     CustLedgEntries.SetFilter(IRASAmt, '<>%1', 0);
-    //     CustLedgEntries.SetFilter("Customer No.", '@DNO*');
-    //     CustLedgEntries.SetRange("Tax E", true);
-    //     CustLedgEntries.SetRange("Batch Indicator", 'O');
-    //     if CustLedgEntries.FindSet() then begin
-    //         repeat
-    //             IRASBatchList.Reset();
-    //             IRASBatchList.SetRange("Entry No.", CustLedgEntries."Entry No.");
-    //             if not IRASBatchList.FindFirst() then begin
-    //                 IRASBatchList2.Reset();
-    //                 IRASBatchList.SetFilter("Record ID", '<>%1', 0);
-    //                 if IRASBatchList2.FindLast() then begin
-    //                     ListMax := IRASBatchList2."Record ID";
-    //                 end;
+    trigger OnOpenPage()
+    var
+        CustLedgEntries: Record "Cust. Ledger Entry";
+        Customer: Record Customer;
+        IRASBatchList, IRASBatchList2 : Record "DOT IRAS Batch Status Lists";
+        ListMax: Integer;
+        TypeNo, NamingNo, IndvIndicator, TypeofDonation : Code[10];
+    begin
+        //input records to IRAS Batch Status List
+        CustLedgEntries.Reset();
+        CustLedgEntries.SetFilter(IRASAmt, '<>%1', 0);
+        CustLedgEntries.SetFilter("Customer No.", '@DNO*');
+        CustLedgEntries.SetRange("Tax E", true);
+        CustLedgEntries.SetRange("Batch Indicator", 'O');
+        if CustLedgEntries.FindSet() then begin
+            repeat
+                IRASBatchList.Reset();
+                IRASBatchList.SetRange("Entry No.", CustLedgEntries."Entry No.");
+                if not IRASBatchList.FindFirst() then begin
+                    IRASBatchList2.Reset();
+                    IRASBatchList.SetFilter("Record ID", '<>%1', 0);
+                    if IRASBatchList2.FindLast() then begin
+                        ListMax := IRASBatchList2."Record ID";
+                    end;
 
-    //                 Rec."Record ID" := ListMax + 1;
-    //                 Rec."Entry No." := CustLedgEntries."Entry No.";
-    //                 Rec."Basis Year" := Date2DMY(CustLedgEntries."Document Date", 3);
-    //                 Rec."Receipt Num" := CustLedgEntries."Document No.";
-    //                 Rec."Date Of Donation" := CustLedgEntries."Document Date";
-    //                 Rec."Batch Indicator" := CustLedgEntries."Batch Indicator";
-    //                 Rec."Authorised Person ID No." := CustLedgEntries."Authorised Person ID No.";
-    //                 Rec."ID No." := CustLedgEntries."ID No.";
-    //                 Rec.Name := CustLedgEntries."Customer Name";
-    //                 Rec."Donation Amount" := CustLedgEntries."Remaining IRASAmnt";
+                    Rec."Record ID" := ListMax + 1;
+                    Rec."Entry No." := CustLedgEntries."Entry No.";
+                    Rec."Basis Year" := Date2DMY(CustLedgEntries."Document Date", 3);
+                    Rec."Receipt Num" := CustLedgEntries."Document No.";
+                    Rec."Date Of Donation" := CustLedgEntries."Document Date";
+                    Rec."Batch Indicator" := CustLedgEntries."Batch Indicator";
+                    Rec."Authorised Person ID No." := CustLedgEntries."Authorised Person ID No.";
+                    Rec."ID No." := CustLedgEntries."ID No.";
+                    Rec.Name := CustLedgEntries."Customer Name";
+                    Rec."Donation Amount" := CustLedgEntries."Remaining IRASAmnt";
 
-    //                 Customer.Reset();
-    //                 Customer.SetRange("No.", CustLedgEntries."Customer No.");
-    //                 if Customer.FindFirst() then begin
-    //                     IndvIndicator := Customer."Indicator No.";
-    //                     TypeofDonation := Customer."Type No.";
-    //                     NamingNo := Customer."Naming No.";
-    //                     TypeNo := Customer."ID Type No.";
-    //                 end;
-    //                 Rec."Indicator No." := IndvIndicator;
-    //                 Rec."Type No." := TypeofDonation;
-    //                 Rec."Naming No." := NamingNo;
-    //                 Rec."ID Type No." := TypeNo;
+                    Customer.Reset();
+                    Customer.SetRange("No.", CustLedgEntries."Customer No.");
+                    if Customer.FindFirst() then begin
+                        IndvIndicator := Customer."Indicator No.";
+                        TypeofDonation := Customer."Type No.";
+                        NamingNo := Customer."Naming No.";
+                        TypeNo := Customer."ID Type No.";
+                    end;
+                    Rec."Indicator No." := IndvIndicator;
+                    Rec."Type No." := TypeofDonation;
+                    Rec."Naming No." := NamingNo;
+                    Rec."ID Type No." := TypeNo;
 
-    //                 Rec.Insert();
-    //             end;
-    //         until CustLedgEntries.Next = 0;
-    //     end;
-    // end;
+                    Rec.Insert();
+                end;
+            until CustLedgEntries.Next = 0;
+        end;
+    end;
 
     trigger OnAfterGetRecord()
     var
