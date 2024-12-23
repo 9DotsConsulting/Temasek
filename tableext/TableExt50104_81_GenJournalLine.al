@@ -56,6 +56,12 @@ tableextension 50104 "Gen. Journal Line" extends "Gen. Journal Line"
             Caption = 'Email Status';
             DataClassification = ToBeClassified;
         }
+        field(50109; "Donor Statement"; Text[2048])
+        {
+            InitValue = '';
+            Caption = 'Donor Statement';
+            DataClassification = ToBeClassified;
+        }
 
         modify(Amount)
         {
