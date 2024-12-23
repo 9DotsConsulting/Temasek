@@ -5,6 +5,8 @@ page 50109 "DOT IRAS Batch Status Lists"
     Caption = 'IRAS Batch Status Lists';
     UsageCategory = Lists;
     SourceTable = "DOT IRAS Batch Status Lists";
+    DeleteAllowed = false;
+    Editable = false;
 
     layout
     {
@@ -70,8 +72,8 @@ page 50109 "DOT IRAS Batch Status Lists"
 
                     end;
                 }
-            }
 
+            }
         }
         area(Promoted)
         {
