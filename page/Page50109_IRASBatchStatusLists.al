@@ -6,6 +6,7 @@ page 50109 "DOT IRAS Batch Status Lists"
     UsageCategory = Lists;
     SourceTable = "DOT IRAS Batch Status Lists";
     DeleteAllowed = false;
+    InsertAllowed = false;
 
     layout
     {
@@ -20,8 +21,8 @@ page 50109 "DOT IRAS Batch Status Lists"
                 field(Status; Rec.Status) { Editable = false; }
                 field(Validate; Rec.Validate) { Editable = false; }
                 field("Recent Date Time"; Rec."Recent Date Time") { Editable = false; }
-                field("Batch Indicator"; Rec."Batch Indicator") { }
-                field("Authorised Person ID No."; Rec."Authorised Person ID No.") { }
+                field("Batch Indicator"; Rec."Batch Indicator") { Editable = false; }
+                field("Authorised Person ID No."; Rec."Authorised Person ID No.") { Editable = false; }
                 field("ID Type No."; Rec."ID Type No.") { Editable = false; }
                 field("ID No."; Rec."ID No.") { Editable = false; }
                 field("Indicator No."; Rec."Indicator No.") { Editable = false; }
