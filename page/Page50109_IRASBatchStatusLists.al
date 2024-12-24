@@ -6,7 +6,6 @@ page 50109 "DOT IRAS Batch Status Lists"
     UsageCategory = Lists;
     SourceTable = "DOT IRAS Batch Status Lists";
     DeleteAllowed = false;
-    Editable = false;
 
     layout
     {
@@ -14,23 +13,23 @@ page 50109 "DOT IRAS Batch Status Lists"
         {
             repeater(Control1)
             {
-                field("Record ID"; Rec."Record ID") { }
+                field("Record ID"; Rec."Record ID") { Editable = false; }
                 field("Basis Year"; Rec."Basis Year") { }
-                field("Receipt Num"; Rec."Receipt Num") { }
-                field("Date Of Donation"; Rec."Date Of Donation") { }
-                field(Status; Rec.Status) { }
-                field(Validate; Rec.Validate) { }
-                field("Recent Date Time"; Rec."Recent Date Time") { }
+                field("Receipt Num"; Rec."Receipt Num") { Editable = false; }
+                field("Date Of Donation"; Rec."Date Of Donation") { Editable = false; }
+                field(Status; Rec.Status) { Editable = false; }
+                field(Validate; Rec.Validate) { Editable = false; }
+                field("Recent Date Time"; Rec."Recent Date Time") { Editable = false; }
                 field("Batch Indicator"; Rec."Batch Indicator") { }
                 field("Authorised Person ID No."; Rec."Authorised Person ID No.") { }
-                field("ID Type No."; Rec."ID Type No.") { }
-                field("ID No."; Rec."ID No.") { }
-                field("Indicator No."; Rec."Indicator No.") { }
-                field(Name; Rec.Name) { }
+                field("ID Type No."; Rec."ID Type No.") { Editable = false; }
+                field("ID No."; Rec."ID No.") { Editable = false; }
+                field("Indicator No."; Rec."Indicator No.") { Editable = false; }
+                field(Name; Rec.Name) { Editable = false; }
                 field("Type No."; Rec."Type No.") { }
                 field("Naming No."; Rec."Naming No.") { }
-                field("Donation Amount"; Rec."Donation Amount") { }
-                field(Response; Rec.Response) { }
+                field("Donation Amount"; Rec."Donation Amount") { Editable = false; }
+                field(Response; Rec.Response) { Editable = false; }
             }
         }
     }
@@ -41,8 +40,8 @@ page 50109 "DOT IRAS Batch Status Lists"
         {
             group(ApplyRecordIds)
             {
-                Caption = 'Apply Record ID';
-                Image = "1099Form";
+                Caption = 'Action';
+                Image = Action;
                 action(ApplyRecordId)
                 {
                     Caption = 'Apply Record ID';
