@@ -174,9 +174,11 @@ page 50109 "DOT IRAS Batch Status Lists"
             repeat
                 CustLedgEntries.Reset();
                 CustLedgEntries.SetRange("Entry No.", IRASBatchList."Entry No.");
+                CustLedgEntries.SetRange("Tax E", false);
                 if CustLedgEntries.FindSet() then begin
-                    if CustLedgEntries."Tax E" = false then
+                    repeat
                         EntryNo := CustLedgEntries."Entry No.";
+                    until CustLedgEntries.Next = 0;
                 end;
 
                 IRASBatchList2.Reset();
