@@ -104,9 +104,9 @@ page 50109 "DOT IRAS Batch Status Lists"
 
     trigger OnOpenPage()
     var
-        CustLedgEntries: Record "Cust. Ledger Entry";
+        CustLedgEntries, rCustLedgEntries : Record "Cust. Ledger Entry";
         Customer: Record Customer;
-        IRASBatchList, IRASBatchList2 : Record "DOT IRAS Batch Status Lists";
+        IRASBatchList, IRASBatchList2, rIRASBatchList : Record "DOT IRAS Batch Status Lists";
         ListMax: Integer;
         TypeNo, NamingNo, IndvIndicator, TypeofDonation : Code[10];
     begin
@@ -155,6 +155,24 @@ page 50109 "DOT IRAS Batch Status Lists"
                 end;
             until CustLedgEntries.Next = 0;
         end;
+
+        IRASBatchList.Reset();
+        IRASBatchList.SetFilter("Donation Amount", '<>%1', 0);
+        if IRASBatchList.FindSet() then begin
+            repeat
+                rCustLedgEntries.Reset();
+                rCustLedgEntries.SetRange("Entry No.", IRASBatchList."Entry No.");
+                if rCustLedgEntries.FindSet() then begin
+                    repeat
+                        if IRASBatchList."Donation Amount" <> rCustLedgEntries."Remaining IRASAmnt" then begin
+                            IRASBatchList."Donation Amount" := rCustLedgEntries."Remaining IRASAmnt";
+                            IRASBatchList.Modify();
+                        end;
+                    until rCustLedgEntries.Next = 0;
+                end;
+            until IRASBatchList.Next = 0;
+        end;
+
     end;
 
     trigger OnAfterGetRecord()
