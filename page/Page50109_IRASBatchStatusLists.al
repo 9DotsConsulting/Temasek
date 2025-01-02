@@ -37,7 +37,7 @@ page 50109 "DOT IRAS Batch Status Lists"
 
     actions
     {
-        area(Navigation)
+        area(Processing)
         {
             group(ApplyRecordIds)
             {
@@ -48,8 +48,16 @@ page 50109 "DOT IRAS Batch Status Lists"
                     Caption = 'Apply Record ID';
                     Image = "1099Form";
                     trigger OnAction()
+                    var
+                        ApplyRecId: Codeunit "IRAS Apply Record Id";
+                        ApplyRecYear: Page "IRAS Apply Record";
                     begin
-
+                        Clear(ApplyRecYear);
+                        Commit();
+                        if ApplyRecYear.RunModal = Action::OK then begin
+                            BasisYear := ApplyRecYear.GetBasisYear();
+                            ApplyRecId.ApplyRecordId(BasisYear);
+                        end;
                     end;
                 }
 
@@ -79,7 +87,7 @@ page 50109 "DOT IRAS Batch Status Lists"
         {
             group(Category_Category6)
             {
-                Caption = 'Apply Record ID';
+                Caption = 'Action';
 
                 actionref(AppyRecordId_Promoted; ApplyRecordId)
                 {
@@ -179,4 +187,7 @@ page 50109 "DOT IRAS Batch Status Lists"
         end;
 
     end;
+
+    var
+        BasisYear: Integer;
 }

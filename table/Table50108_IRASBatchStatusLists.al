@@ -87,10 +87,14 @@ table 50108 "DOT IRAS Batch Status Lists"
 
     keys
     {
-        key(Key1; "Record ID", "Entry No.")
+        key(Key1; "Entry No.")
         {
             Clustered = true;
         }
+    }
+    fieldgroups
+    {
+        fieldgroup(DropDown; "Entry No.", "Basis Year") { }
     }
 
 }
