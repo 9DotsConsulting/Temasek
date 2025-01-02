@@ -113,6 +113,7 @@ page 50109 "DOT IRAS Batch Status Lists"
         //input records to IRAS Batch Status List
         CustLedgEntries.Reset();
         CustLedgEntries.SetFilter(IRASAmt, '<>%1', 0);
+        CustLedgEntries.SetRange("Document Type", "Gen. Journal Document Type"::Payment);
         CustLedgEntries.SetFilter("Customer No.", '@DNO*');
         CustLedgEntries.SetRange("Tax E", true);
         CustLedgEntries.SetRange("Batch Indicator", 'O');
