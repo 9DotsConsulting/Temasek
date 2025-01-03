@@ -59,24 +59,37 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
 
                     trigger OnValidate()
                     var
+                        CustLedgEntries: Record "Cust. Ledger Entry";
                         IDNo: Text[20];
                     begin
-                        if Rec."ID No." = '' then
-                            Error('ID No. is mandatory!');
+                        // if Rec."ID No." = '' then
+                        //     Error('ID No. is mandatory!');
 
-                        IDNo := Rec."ID No.";
-                        case Rec."ID Type No." of
-                            '1':
-                                begin
-                                    If not IDNo.contains('S') AND not IDNo.contains('T') then
-                                        Error('ID No. prefix must be S or T');
-                                end;
+                        if Rec."ID No." <> '' then begin
+                            IDNo := Rec."ID No.";
 
-                            '2':
-                                begin
-                                    If not IDNo.contains('F') AND not IDNo.contains('G') AND not IDNo.contains('M') then
-                                        Error('ID No. prefix must be F, G or T');
-                                end;
+                            case Rec."ID Type No." of
+                                '1':
+                                    begin
+                                        If not IDNo.contains('S') AND not IDNo.contains('T') then
+                                            Error('ID No. prefix must be S or T');
+                                    end;
+
+                                '2':
+                                    begin
+                                        If not IDNo.contains('F') AND not IDNo.contains('G') AND not IDNo.contains('M') then
+                                            Error('ID No. prefix must be F, G or T');
+                                    end;
+                            end;
+                        end;
+
+                        CustLedgEntries.Reset();
+                        CustLedgEntries.SetRange("Customer No.", Rec."No.");
+                        if CustLedgEntries.FindSet() then begin
+                            repeat
+                                CustLedgEntries."ID No." := Rec."ID No.";
+                                CustLedgEntries.Modify();
+                            until CustLedgEntries.Next = 0;
                         end;
                     end;
                 }

@@ -169,6 +169,11 @@ page 50109 "DOT IRAS Batch Status Lists"
                             IRASBatchList."Donation Amount" := rCustLedgEntries."Remaining IRASAmnt";
                             IRASBatchList.Modify();
                         end;
+
+                        if (IRASBatchList."ID No." <> rCustLedgEntries."ID No.") or (Rec."ID No." = '') then begin
+                            IRASBatchList."ID No." := rCustLedgEntries."ID No.";
+                            IRASBatchList.Modify();
+                        end;
                     until rCustLedgEntries.Next = 0;
                 end;
             until IRASBatchList.Next = 0;
