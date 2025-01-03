@@ -82,6 +82,10 @@ table 50108 "DOT IRAS Batch Status Lists"
         {
             DataClassification = ToBeClassified;
         }
+        field(50117; "Customer No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 

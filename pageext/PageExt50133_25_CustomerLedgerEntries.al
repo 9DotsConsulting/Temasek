@@ -45,10 +45,17 @@ pageextension 50133 "DOT Customer Ledger Entries" extends "Customer Ledger Entri
     var
         Customer: Record Customer;
         GenJnlBatch: Record "Gen. Journal Batch";
+        CustomerIDNo: Code[20];
     begin
         Rec.IRASAmt := Round(-Rec.Amount, 1, '>');
         Rec."Remaining IRASAmnt" := Round(-Rec."Remaining Amount", 1, '>');
         Rec.Modify();
+
+        CustomerIDNo := getCustomerIDNo(Rec."Customer No.");
+        if (rec."ID No." <> CustomerIDNo) or (Rec."ID No." = '') then begin
+            Rec."ID No." := CustomerIDNo;
+            Rec.Modify();
+        end;
     end;
 
     // trigger OnAfterGetCurrRecord()
@@ -106,4 +113,13 @@ pageextension 50133 "DOT Customer Ledger Entries" extends "Customer Ledger Entri
     //         until CustLedgEntries.Next = 0;
     //     end;
     // end;
+
+    local procedure getCustomerIDNo(CustNo: Code[20]): Code[20];
+    var
+        Customer: Record Customer;
+    begin
+        if not Customer.Get(CustNo) then
+            exit('');
+        exit(Customer."ID No.");
+    end;
 }

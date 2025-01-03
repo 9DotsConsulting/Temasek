@@ -82,15 +82,6 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
                                     end;
                             end;
                         end;
-
-                        CustLedgEntries.Reset();
-                        CustLedgEntries.SetRange("Customer No.", Rec."No.");
-                        if CustLedgEntries.FindSet() then begin
-                            repeat
-                                CustLedgEntries."ID No." := Rec."ID No.";
-                                CustLedgEntries.Modify();
-                            until CustLedgEntries.Next = 0;
-                        end;
                     end;
                 }
                 field("Indicator No.";
@@ -179,7 +170,7 @@ pageextension 50128 "DOT Customer Card" extends "Customer Card"
         CustNo: Text[20];
     begin
         CustNo := Rec."No.";
-        if CustNo.contains('DNO') then
+        if CustNo.StartsWith('DNO') then
             ActionVisible := true
         else
             ActionVisible := false;

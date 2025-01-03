@@ -109,6 +109,7 @@ page 50109 "DOT IRAS Batch Status Lists"
         IRASBatchList, IRASBatchList2, rIRASBatchList : Record "DOT IRAS Batch Status Lists";
         ListMax: Integer;
         TypeNo, NamingNo, IndvIndicator, TypeofDonation : Code[10];
+        CustomerIDNo: Code[20];
     begin
         //input records to IRAS Batch Status List
         CustLedgEntries.Reset();
@@ -137,6 +138,7 @@ page 50109 "DOT IRAS Batch Status Lists"
                     Rec."Authorised Person ID No." := CustLedgEntries."Authorised Person ID No.";
                     Rec."ID No." := CustLedgEntries."ID No.";
                     Rec.Name := CustLedgEntries."Customer Name";
+                    Rec."Customer No." := CustLedgEntries."Customer No.";
                     Rec."Donation Amount" := CustLedgEntries."Remaining IRASAmnt";
 
                     Customer.Reset();
@@ -170,11 +172,22 @@ page 50109 "DOT IRAS Batch Status Lists"
                             IRASBatchList.Modify();
                         end;
 
-                        if (IRASBatchList."ID No." <> rCustLedgEntries."ID No.") or (Rec."ID No." = '') then begin
-                            IRASBatchList."ID No." := rCustLedgEntries."ID No.";
+                        if IRASBatchList."Customer No." = '' then begin
+                            IRASBatchList."Customer No." := rCustLedgEntries."Customer No.";
                             IRASBatchList.Modify();
                         end;
                     until rCustLedgEntries.Next = 0;
+                end;
+
+                Customer.Reset();
+                Customer.SetRange("No.", IRASBatchList."Customer No.");
+                if Customer.FindFirst() then begin
+                    CustomerIDNo := Customer."ID No.";
+                end;
+
+                if (IRASBatchList."ID No." <> CustomerIDNo) or (IRASBatchList."ID No." = '') then begin
+                    IRASBatchList."ID No." := CustomerIDNo;
+                    IRASBatchList.Modify();
                 end;
             until IRASBatchList.Next = 0;
         end;
